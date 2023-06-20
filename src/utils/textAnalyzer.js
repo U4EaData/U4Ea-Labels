@@ -76,6 +76,49 @@ export function analyzeText(inputText) {
         if (negativeLiberateWords.includes(word)) liberateScore -= 1;
     });
 
+    positiveUnityPhrases.forEach(phrase => {
+        if (cleanedText.includes(phrase)) unityScore += 1;
+    });
+    negativeUnityPhrases.forEach(phrase => {
+        if (cleanedText.includes(phrase)) unityScore -= 1;
+    });
+    positiveIntuitionPhrases.forEach(phrase => {
+        if (cleanedText.includes(phrase)) intuitionScore += 1;
+    });
+    negativeIntuitionPhrases.forEach(phrase => {
+        if (cleanedText.includes(phrase)) intuitionScore -= 1;
+    });
+    positiveResolvePhrases.forEach(phrase => {
+        if (cleanedText.includes(phrase)) resolveScore += 1;
+    });
+    negativeResolvePhrases.forEach(phrase => {
+        if (cleanedText.includes(phrase)) resolveScore -= 1;
+    });
+    positiveHarmonyPhrases.forEach(phrase => {
+        if (cleanedText.includes(phrase)) harmonyScore += 1;
+    });
+    negativeHarmonyPhrases.forEach(phrase => {
+        if (cleanedText.includes(phrase)) harmonyScore -= 1;
+    });
+    positiveMiraclesPhrases.forEach(phrase => {
+        if (cleanedText.includes(phrase)) miraclesScore += 1;
+    });
+    negativeMiraclesPhrases.forEach(phrase => {
+        if (cleanedText.includes(phrase)) miraclesScore -= 1;
+    });
+    positiveCleansePhrases.forEach(phrase => {
+        if (cleanedText.includes(phrase)) cleanseScore += 1;
+    });
+    negativeCleansePhrases.forEach(phrase => {
+        if (cleanedText.includes(phrase)) cleanseScore -= 1;
+    });
+    positiveLiberatePhrases.forEach(phrase => {
+        if (cleanedText.includes(phrase)) liberateScore += 1;
+    });
+    negativeLiberatePhrases.forEach(phrase => {
+        if (cleanedText.includes(phrase)) liberateScore -= 1;
+    });
+
     let sentimentScore = sentiment.analyze(inputText).score;
 
     let sortedWords = Object.keys(wordFrequencies).sort((a, b) => wordFrequencies[b] - wordFrequencies[a]);

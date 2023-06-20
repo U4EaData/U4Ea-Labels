@@ -13,7 +13,7 @@ function NutritionLabel() {
             <h2>Song: {song}</h2>
             <h2>Artist: {artist}</h2>
             <h2>Total words: {result.totalWords}</h2>
-            <h2>Score: {result.sentimentScore}</h2>
+            <h2>Emotional Score: {result.sentimentScore}</h2>
             <h2>Unity Score: {result.unityScore}</h2>
             <h2>Intuition Score: {result.intuitionScore}</h2>
             <h2>Resolve Score: {result.resolveScore}</h2>
