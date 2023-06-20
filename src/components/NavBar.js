@@ -5,7 +5,7 @@ function NavBar() {
 
     return (
         <nav className="bg-gray-800 p-4 text-center text-white cursor-pointer" onClick={() => navigate('/')}>
-            u4ea
+            U4Ea
         </nav>
     );
 }
