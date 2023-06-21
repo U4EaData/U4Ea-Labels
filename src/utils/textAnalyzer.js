@@ -51,6 +51,8 @@ export function analyzeText(inputText) {
     let cleanseScore = 0;
     let liberateScore = 0;
 
+    let wordScores = {};
+
     words.forEach((word) => {
         wordFrequencies[word] = (wordFrequencies[word] || 0) + 1;
 
@@ -74,6 +76,9 @@ export function analyzeText(inputText) {
 
         if (positiveLiberateWords.includes(word)) liberateScore += 1;
         if (negativeLiberateWords.includes(word)) liberateScore -= 1;
+
+        let score = sentiment.analyze(word).score;
+        if (score !== 0) wordScores[word] = (wordScores[word] || 0) + score;
     });
 
     positiveUnityPhrases.forEach(phrase => {
@@ -122,6 +127,13 @@ export function analyzeText(inputText) {
     let sentimentScore = sentiment.analyze(inputText).score;
 
     let sortedWords = Object.keys(wordFrequencies).sort((a, b) => wordFrequencies[b] - wordFrequencies[a]);
+    let sortedSentimentWords = Object.keys(wordScores).sort((a, b) => wordScores[b] - wordScores[a]).slice(0, 5);
+
+    let topSentimentWords = sortedSentimentWords.map(word => ({
+        word,
+        frequency: wordFrequencies[word],
+        contribution: wordScores[word]
+    }))
 
     let topWords = sortedWords.map(word => ({
         // let topWords = sortedWords.slice(0, 5).map(word => ({ (gets top 5 words)
@@ -139,6 +151,7 @@ export function analyzeText(inputText) {
         harmonyScore,
         miraclesScore,
         cleanseScore,
-        liberateScore
+        liberateScore,
+        topSentimentWords
     };
 }

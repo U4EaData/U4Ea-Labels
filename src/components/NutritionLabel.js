@@ -29,6 +29,14 @@ function NutritionLabel() {
                     </li>
                 ))}
             </ul>
+            <h2>Top sentiment words:</h2>
+            <ul>
+                {result.topSentimentWords.map((word, index) => (
+                    <li key={index}>
+                        {word.word} ({word.frequency}, Contribution: {word.contribution})
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 }
