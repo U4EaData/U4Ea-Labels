@@ -35,12 +35,38 @@ function Home() {
     };
 
     return (
-        <div className="home">
-            <input type="text" onChange={(e) => setText(e.target.value)} placeholder="Enter text" />
-            <input type="text" onChange={(e) => setSong(e.target.value)} placeholder="Enter song name" />
-            <input type="text" onChange={(e) => setArtist(e.target.value)} placeholder="Enter artist name" />
-            <button onClick={handleAnalyzeText}>Analyze</button>
-            <button onClick={goToLabel}>Test Label</button>
+        <div className="home flex flex-col items-center justify-center h-screen bg-gray-100">
+            <textarea
+                className="mb-2 p-2 w-1/2 h-2/5 border-2 border-gray-200 rounded-lg shadow-lg resize-none"
+                onChange={(e) => setText(e.target.value)}
+                placeholder="Enter text"
+            />
+            <div className="flex mb-2">
+                <input
+                    type="text"
+                    className="mr-2 p-2 w-32 h-8 border-2 border-gray-200 rounded-lg shadow-lg"
+                    onChange={(e) => setSong(e.target.value)}
+                    placeholder="Enter song"
+                />
+                <input
+                    type="text"
+                    className="p-2 w-32 h-8 border-2 border-gray-200 rounded-lg shadow-lg"
+                    onChange={(e) => setArtist(e.target.value)}
+                    placeholder="Enter artist"
+                />
+            </div>
+            <button
+                className="mb-2 bg-blue-600 hover:bg-gray-700 text-white font-semibold w-32 h-10 rounded-lg shadow-md focus:outline-none focus:shadow-outline"
+                onClick={handleAnalyzeText}
+            >
+                Analyze
+            </button>
+            <button
+                className="bg-blue-600 hover:bg-gray-700 text-white font-semibold w-32 h-10 rounded-lg shadow-md focus:outline-none focus:shadow-outline"
+                onClick={goToLabel}
+            >
+                Test Label
+            </button>
         </div>
     );
 }
