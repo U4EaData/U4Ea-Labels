@@ -3,14 +3,16 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import NutritionLabel from './components/NutritionLabel';
 import NavBar from "./components/NavBar";
+import Label from "./components/Label";
 
 function App() {
   return (
       <Router>
           <NavBar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/label" element={<NutritionLabel />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/label" element={<NutritionLabel />} />
+            <Route path="/figma" element={<Label />} />
         </Routes>
       </Router>
   );
