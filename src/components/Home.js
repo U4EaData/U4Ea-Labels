@@ -31,7 +31,7 @@ function Home() {
 
     const goToLabel =() => {
         let result = analyzeText(text, lyrics);
-        navigate('/figma', { state: { result } });
+        navigate('/figma', { state: { result, song, artist } });
     };
 
     return (
@@ -56,16 +56,16 @@ function Home() {
                 />
             </div>
             <button
-                className="mb-2 bg-blue-600 hover:bg-gray-700 text-white font-semibold w-32 h-10 rounded-lg shadow-md focus:outline-none focus:shadow-outline"
+                className="mb-2 bg-blue-600 hover:bg-blue-900 text-white font-semibold w-32 h-10 rounded-lg shadow-md focus:outline-none focus:shadow-outline"
                 onClick={handleAnalyzeText}
             >
                 Analyze
             </button>
             <button
-                className="bg-blue-600 hover:bg-gray-700 text-white font-semibold w-32 h-10 rounded-lg shadow-md focus:outline-none focus:shadow-outline"
+                className="bg-blue-600 hover:bg-blue-900 text-white font-semibold w-32 h-10 rounded-lg shadow-md focus:outline-none focus:shadow-outline"
                 onClick={goToLabel}
             >
-                Test Label
+                Nutrition Facts
             </button>
         </div>
     );
