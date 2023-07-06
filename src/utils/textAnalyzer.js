@@ -42,12 +42,17 @@ const stopWords = ['im', 'like', 'me', 'my', 'we', 'our', 'ours', 'ourselves', "
 
 
 export function analyzeText(inputText, lyrics) {
+    let cleanedText;
+    if (inputText.length > 0) {
+        let text = inputText;
+        cleanedText = text.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}?"=\_`~()]/g, '');
+    }
+    if (lyrics.length > 0) {
+        let text = lyrics.slice(0, -69);
+        cleanedText = text.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}?"=\_`~()]/g, '');
+    }
     let wordFrequencies = {};
-    // for sentiment top words
     let sentimentWordFrequencies = {};
-    let slicedText = lyrics.slice(0, -69);
-    let cleanedText = slicedText.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}?"=\_`~()]/g, '');
-    // let cleanedText = lyrics.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}?"=\_`~()]/g, '');
     let words = cleanedText.split(' ');
 
     let unityScore = 0;
@@ -138,8 +143,13 @@ export function analyzeText(inputText, lyrics) {
         if (cleanedText.includes(phrase)) liberateScore -= 1;
     });
 
-    let sentimentScore = sentiment.analyze(slicedText).score;
-    // let sentimentScore = sentiment.analyze(lyrics).score;
+    let sentimentScore;
+    if (inputText.length > 0) {
+        sentimentScore = sentiment.analyze(inputText).score;
+    }
+    if (lyrics.length > 0) {
+        sentimentScore = sentiment.analyze(lyrics).score;
+    }
 
     let sortedWords = Object.keys(wordFrequencies).sort((a, b) => wordFrequencies[b] - wordFrequencies[a]);
     let sortedSentimentWords = Object.keys(wordScores).sort((a, b) => wordScores[b] - wordScores[a]).slice(0, 5);

@@ -39,20 +39,20 @@ function Home() {
             <textarea
                 className="mb-2 p-2 w-1/2 h-2/5 border-2 border-gray-200 rounded-lg shadow-lg resize-none"
                 onChange={(e) => setText(e.target.value)}
-                placeholder="Enter text"
+                placeholder="Enter text..."
             />
             <div className="flex mb-2">
                 <input
                     type="text"
                     className="mr-2 p-2 w-32 h-8 border-2 border-gray-200 rounded-lg shadow-lg"
                     onChange={(e) => setSong(e.target.value)}
-                    placeholder="Enter song"
+                    placeholder="Enter song..."
                 />
                 <input
                     type="text"
                     className="p-2 w-32 h-8 border-2 border-gray-200 rounded-lg shadow-lg"
                     onChange={(e) => setArtist(e.target.value)}
-                    placeholder="Enter artist"
+                    placeholder="Enter artist..."
                 />
             </div>
             <button
