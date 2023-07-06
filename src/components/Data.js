@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 
-function NutritionLabel() {
+function Data() {
     const location = useLocation();
     const { result, song, artist } = location.state || {};
 
@@ -41,4 +41,4 @@ function NutritionLabel() {
     );
 }
 
-export default NutritionLabel;
+export default Data;

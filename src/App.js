@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
-import NutritionLabel from './components/NutritionLabel';
+import Data from './components/Data';
 import NavBar from "./components/NavBar";
 import Label from "./components/Label";
 
@@ -11,7 +11,7 @@ function App() {
           <NavBar />
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/label" element={<NutritionLabel />} />
+            <Route path="/label" element={<Data />} />
             <Route path="/figma" element={<Label />} />
         </Routes>
       </Router>
