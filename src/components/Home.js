@@ -35,7 +35,7 @@ function Home() {
     };
 
     return (
-        <div className="home flex flex-col items-center justify-center h-screen bg-gray-100">
+        <div className="home flex flex-col items-center justify-center h-screen bg-gray-300">
             <textarea
                 className="mb-2 p-2 w-1/2 h-2/5 border-2 border-gray-200 rounded-lg shadow-lg resize-none"
                 onChange={(e) => setText(e.target.value)}
