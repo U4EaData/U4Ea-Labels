@@ -8,6 +8,7 @@ function Home() {
     const [song, setSong] = useState('');
     const [artist, setArtist] = useState('');
     const [lyrics, setLyrics] = useState('');
+    const [trackId, setTrackId] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -23,6 +24,22 @@ function Home() {
         }
         fetchLyrics();
     }, [song, artist]);
+
+    // useEffect(() => {
+    //     const fetchTrackId = async () => {
+    //         if (song !== '' && artist !== '') {
+    //             const res = await axios.get(`http://localhost:5000/track?song=${song}&artist=${artist}`);
+    //             if (res.data && res.data.message && res.data.message.body && res.data.message.body.track && res.data.message.body.track.track_id && res.data.message.body.track.track_name && res.data.message.body.track.artist_name) {
+    //                 setTrackId(res.data.message.body.track.track_id);
+    //                 setSong(res.data.message.body.track.track_name);
+    //                 setArtist(res.data.message.body.track.artist_name);
+    //             } else {
+    //                 console.error('Unexpected API response', res.data);
+    //             }
+    //         }
+    //     }
+    //     fetchTrackId();
+    // }, [song, artist]);
 
     const handleAnalyzeText = () => {
         let result = analyzeText(text, lyrics);

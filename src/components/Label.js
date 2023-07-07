@@ -27,7 +27,7 @@ function Label() {
 
     return (
         <div className="home flex flex-col items-center justify-center h-screen bg-gray-300">
-            <div className="mx-auto my-4 p-2 border-2 w-1/4 bg-white">
+            <div className="mx-auto my-4 p-2 border-2 w-1/5 bg-white">
                 <div className="m-auto pt-3 px-3 pb-1 border-2 border-black">
                     <h2 className="text-center font-black mb-1 text-3xl">{song}</h2>
                     <hr className="border-black" />

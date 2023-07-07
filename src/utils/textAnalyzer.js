@@ -46,14 +46,14 @@ export function analyzeText(inputText, lyrics) {
     if (inputText.length > 0) {
         let text = inputText;
         cleanedText = text.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}?"=\_`~()]/g, '');
-    }
-    if (lyrics.length > 0) {
+    } else if (lyrics.length > 0) {
         let text = lyrics.slice(0, -69);
         cleanedText = text.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}?"=\_`~()]/g, '');
     }
+    
     let wordFrequencies = {};
     let sentimentWordFrequencies = {};
-    let words = cleanedText.split(' ');
+    let words = cleanedText.split(/\s+/);
 
     let unityScore = 0;
     let intuitionScore = 0;
