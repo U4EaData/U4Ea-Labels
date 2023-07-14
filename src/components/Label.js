@@ -24,6 +24,8 @@ function Label() {
 
     const topWords = result.topSentimentWords.slice(0, 3);
     // const colors = ['red', 'green', 'blue'];
+    // test
+
 
 
     return (
