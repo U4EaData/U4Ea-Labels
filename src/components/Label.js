@@ -7,6 +7,7 @@ function Label() {
     if (!result) {
         return <div>Error: No data available</div>;
     }
+    // issue
 
     const u4eaScores = [
         { name: "Unity", value: result.unityScore },
