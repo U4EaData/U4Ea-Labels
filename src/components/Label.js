@@ -23,6 +23,7 @@ function Label() {
     const topScores = sortedScores.slice(0, 3);
 
     const topWords = result.topSentimentWords.slice(0, 3);
+    // const colors = ['red', 'green', 'blue'];
 
 
     return (
@@ -41,9 +42,11 @@ function Label() {
                     <h2 className="text-right my-1">% Daily Value*</h2>
                     <hr className="border-black mb-1" />
                     {topScores.map((score, index) => (
+
                         <div key={index}>
                             <div className="flex justify-between text-xl font-semibold">
                                 <h2>{score.name}</h2>
+                                {/*<div className="border-b-2" style={{ borderColor: colors[index] }}></div>*/}
                                 <h2>{score.value}%</h2>
                             </div>
                             <hr className="border-black my-1" />
