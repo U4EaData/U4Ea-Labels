@@ -11,11 +11,10 @@ function App() {
           <NavBar />
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/label" element={<Data />} />
-            <Route path="/figma" element={<Label />} />
+            <Route path="/data" element={<Data />} />
+            <Route path="/label" element={<Label />} />
         </Routes>
       </Router>
-  //     test commit
   );
 }
 

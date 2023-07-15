@@ -1,3 +1,4 @@
+// Analyzes text
 import Sentiment from 'sentiment';
 
 const sentiment = new Sentiment();
@@ -38,11 +39,13 @@ const positiveLiberatePhrases = ["set in stone", "solid as a rock", "staying put
 const negativeLiberateWords = ["anxiety", "angst", "apprehension", "concern", "disquiet", "doubt", "dread", "jitters", "misery", "misgiving", "mistrust", "nervousness", "panic", "restlessness", "suffering", "suspense", "trouble", "uncertainty", "unease", "uneasiness", "botheration", "butterflies", "care", "creeps", "disquietude", "distress", "downer", "drag", "fidgets", "flap", "foreboding", "fretfulness", "fuss", "heebie-jeebies", "jumps", "needles", "shakes", "shivers", "solicitude", "sweat", "watchfulness", "willies", "worriment", "all-overs", "ants in pants", "cold sweat", "goose bumps", "nail-biting", "pins and needles", "grief", "agony", "anguish", "bereavement", "despair", "discomfort", "gloom", "heartache", "heartbreak", "melancholy", "misery", "mourning", "pain", "regret", "remorse", "sadness", "sorrow", "trouble", "unhappiness", "woe", "worry", "affliction", "care", "dejection", "depression", "desolation", "despondency", "disquiet", "distress", "dole", "dolor", "grievance", "harassment", "infelicity", "lamentation", "malaise", "mortification", "mournfulness", "purgatory", "rue", "torture", "trial", "tribulation", "vexation", "wretchedness", "bemoaning", "bewailing", "deploring", "lamenting", "repining", "guilt", "culpability", "disgrace", "indiscretion", "liability", "regret", "remorse", "responsibility", "shame", "sin", "stigma", "answerability", "blameworthiness", "contrition", "crime", "criminality", "delinquency", "dereliction", "dishonor", "error", "failing", "fault", "infamy", "iniquity", "lapse", "malfeasance", "malpractice", "misbehavior", "misconduct", "misstep", "offense", "onus", "penitence", "self-condemnation", "self-reproach", "sinfulness", "slip", "solecism", "transgression", "wickedness", "wrong", "malefaction", "peccability", "fear", "alarm", "angst", "anxiety", "apprehension", "awe", "concern", "despair", "dismay", "doubt", "dread", "horror", "jitters", "panic", "scare", "suspicion", "terror", "unease", "uneasiness", "worry", "abhorrence", "agitation", "apprehensiveness", "aversion", "consternation", "cowardice", "creeps", "discomposure", "disquietude", "distress", "faintheartedness", "fearfulness", "foreboding", "fright", "funk", "misgiving", "nightmare", "phobia", "presentiment", "qualm", "reverence", "revulsion", "timidity", "trembling", "trepidation", "bête noire", "chickenheartedness", "cold feet", "cold sweat", "recreancy", "feared", "fearing", "fears", "unfearing"];
 const negativeLiberatePhrases = ["ants in pants", "cold sweat", "goose bumps", "pins and needles", "bête noire", "cold feet", "cold sweat"];
 
+// words that aren't displayed in the word frequencies
 const stopWords = ['im', 'like', 'me', 'my', 'we', 'our', 'ours', 'ourselves', "you're", "you've", "you'll", "you'd", 'your', 'yours', 'yourself', 'yourselves', 'he', 'him', 'his', 'himself', 'she', "she's", 'her', 'hers', 'herself', 'it', "it's", 'its', 'itself', 'they', 'them', 'their', 'theirs', 'themselves', 'what', 'which', 'who', 'whom', 'this', 'that', "that'll", 'these', 'those', 'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being', 'have', 'has', 'had', 'having', 'do', 'does', 'did', 'doing', 'a', 'an', 'the', 'and', 'but', 'if', 'or', 'because', 'as', 'until', 'while', 'of', 'at', 'by', 'for', 'with', 'about', 'against', 'between', 'into', 'through', 'during', 'before', 'after', 'above', 'below', 'to', 'from', 'up', 'down', 'in', 'out', 'on', 'off', 'over', 'under', 'again', 'further', 'then', 'once', 'here', 'there', 'when', 'where', 'why', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'nor', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 's', 't', 'can', 'will', 'just', 'don', "don't", 'should', "should've", 'now', 'd', 'll', 'm', 'o', 're', 've', 'y', 'ain', 'aren', "aren't", 'couldn', "couldn't", 'didn', "didn't", 'doesn', "doesn't", 'hadn', "hadn't", 'hasn', "hasn't", 'haven', "haven't", 'isn', "isn't", 'ma', 'mightn', "mightn't", 'mustn', "mustn't", 'needn', "needn't", 'shan', "shan't", 'shouldn', "shouldn't", 'wasn', "wasn't", 'weren', "weren't", 'won', "won't", 'wouldn', "wouldn't"];
 
-
+// inputText is from text box, lyrics is from API
 export function analyzeText(inputText, lyrics) {
     let cleanedText;
+    // makes sure this function uses the correct body of text
     if (inputText.length > 0) {
         let text = inputText;
         cleanedText = text.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}?"=\_`~()]/g, '');
@@ -65,6 +68,7 @@ export function analyzeText(inputText, lyrics) {
 
     let wordScores = {};
 
+    // goes through each word and gives the u4ea scores
     words.forEach((word) => {
 
         if (positiveUnityWords.includes(word)) unityScore += 1;
@@ -100,6 +104,7 @@ export function analyzeText(inputText, lyrics) {
         sentimentWordFrequencies[word] = (sentimentWordFrequencies[word] || 0) + 1;
     });
 
+    // scoring but for the u4ea phrases
     positiveUnityPhrases.forEach(phrase => {
         if (cleanedText.includes(phrase)) unityScore += 1;
     });
@@ -144,6 +149,7 @@ export function analyzeText(inputText, lyrics) {
     });
 
     let sentimentScore;
+    // uses sentiment library to give it a mood score
     if (inputText.length > 0) {
         sentimentScore = sentiment.analyze(inputText).score;
     }
@@ -151,21 +157,25 @@ export function analyzeText(inputText, lyrics) {
         sentimentScore = sentiment.analyze(lyrics).score;
     }
 
+    // sorts words from highest to lowest
     let sortedWords = Object.keys(wordFrequencies).sort((a, b) => wordFrequencies[b] - wordFrequencies[a]);
     let sortedSentimentWords = Object.keys(wordScores).sort((a, b) => wordScores[b] - wordScores[a]).slice(0, 5);
 
+    // maps words to their respective frequencies and point contributions
     let topSentimentWords = sortedSentimentWords.map(word => ({
         word,
         frequency: sentimentWordFrequencies[word],
         contribution: wordScores[word]
     }))
 
+    // maps words to their frequencies
     let topWords = sortedWords.map(word => ({
         // let topWords = sortedWords.slice(0, 5).map(word => ({ (gets top 5 words)
         word,
         frequency: wordFrequencies[word],
     }));
 
+    // returns all the scores
     return {
         totalWords: words.length,
         topWords,
