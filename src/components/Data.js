@@ -1,3 +1,4 @@
+// Data page shown after pressing 'Analyze' button
 import { useLocation } from 'react-router-dom';
 
 function Data() {
@@ -10,12 +11,15 @@ function Data() {
 
     return (
         <div className="flex flex-col md:flex-row justify-between">
+            {/*Left side*/}
             <div className="md:w-1/2 p-5 bg-gray-200">
+                {/*Top left container: song name, artist name, total word count*/}
                 <div className="p-5 bg-gray-300 mb-5 rounded-lg">
                     <h2 className="mb-2">Song: {song}</h2>
                     <h2 className="mb-2">Artist: {artist}</h2>
                     <h2>Total words: {result.totalWords}</h2>
                 </div>
+                {/*Bottom left container: scores*/}
                 <div className="p-5 bg-gray-300 rounded-lg">
                     <h2 className="mb-2">Emotional Score: {result.sentimentScore}</h2>
                     <h2 className="mb-2">Unity Score: {result.unityScore}</h2>
@@ -27,7 +31,9 @@ function Data() {
                     <h2>Liberate Score: {result.liberateScore}</h2>
                 </div>
             </div>
+            {/*Right side*/}
             <div className="md:w-1/2 p-5 bg-gray-200">
+                {/*Top right container: top 5 sentiment words*/}
                 <div className="p-5 bg-gray-300 mb-5 overflow-auto rounded-lg">
                     <h2>Top sentiment words:</h2>
                     <ul>
@@ -38,6 +44,7 @@ function Data() {
                         ))}
                     </ul>
                 </div>
+                {/*Bottom right container: Words and frequencies*/}
                 <div className="p-5 bg-gray-300 overflow-auto rounded-lg h-1/6">
                     <h2>Most frequent words:</h2>
                     <ul>

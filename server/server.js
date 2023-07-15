@@ -1,3 +1,4 @@
+// Server that makes requests to the API
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
@@ -5,6 +6,7 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 
+// fetches lyrics
 app.get('/lyrics', async (req, res) => {
     try {
         const { song, artist } = req.query;

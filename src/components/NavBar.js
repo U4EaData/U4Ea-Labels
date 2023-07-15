@@ -1,3 +1,4 @@
+// Navigation bar displayed at the top
 import { useNavigate } from 'react-router-dom';
 
 function NavBar() {
