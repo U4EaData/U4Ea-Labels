@@ -20,7 +20,7 @@ function Label() {
     ];
 
     // sort scores
-    const sortedScores = u4eaScores.sort((a, b) => b.value - a.value);
+    const sortedScores = u4eaScores.sort((a, b) => Math.abs(b.value) - Math.abs(a.value));
     const topScores = sortedScores.slice(0, 3);
 
     const topWords = result.topSentimentWords.slice(0, 3);
@@ -46,10 +46,13 @@ function Label() {
                     {/*top 3 u4ea scores and their percentages*/}
                     {topScores.map((score, index) => (
                         <div key={index}>
-                            <div className="flex justify-between text-xl font-semibold">
+                            <div className="flex  justify-between text-xl font-semibold">
                                 <h2>{score.name}</h2>
+                                {/*<div className="w-full h-4 bg-blue-500 my-auto" />*/}
+
                                 <h2>{score.value}%</h2>
                             </div>
+                            {/*<div className="w-full h-4 bg-blue-500 my-auto" />*/}
                             <hr className="border-black my-1" />
                         </div>
                     ))}
