@@ -6,3 +6,6 @@ Analyzes music data and formulates a piece of artwork in the form of a nutrition
 ## How to Run
 1. Run server.js
 2. In the project directory, run: `npm start`
+
+## Miro Board
+https://miro.com/app/board/uXjVM4QpAuQ=/
