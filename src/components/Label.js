@@ -10,13 +10,13 @@ function Label() {
     }
 
     const u4eaScores = [
-        { name: "Unity", value: result.unityScore },
-        { name: "Intuition", value: result.intuitionScore },
-        { name: "Resolve", value: result.resolveScore },
-        { name: "Harmony", value: result.harmonyScore },
-        { name: "Miracles", value: result.miraclesScore },
-        { name: "Cleanse", value: result.cleanseScore },
-        { name: "Liberate", value: result.liberateScore }
+        { name: "Unity", value: result.unityScore, color: "purple" },
+        { name: "Intuition", value: result.intuitionScore, color: "blue" },
+        { name: "Resolve", value: result.resolveScore, color: "turquoise" },
+        { name: "Harmony", value: result.harmonyScore, color: "green" },
+        { name: "Miracles", value: result.miraclesScore, color: "yellow" },
+        { name: "Cleanse", value: result.cleanseScore, color: "orange" },
+        { name: "Liberate", value: result.liberateScore, color: "red" }
     ];
 
     // sort scores
@@ -24,6 +24,16 @@ function Label() {
     const topScores = sortedScores.slice(0, 3);
 
     const topWords = result.topSentimentWords.slice(0, 3);
+
+    let moodColor;
+
+    if (result.sentimentScore >= 0) {
+        moodColor = "#cc66ff";
+    } else {
+        moodColor = "#000000";
+    }
+
+
 
     return (
         <div className="home flex flex-col items-center justify-center h-screen bg-gray-300">
@@ -46,20 +56,30 @@ function Label() {
                     {/*top 3 u4ea scores and their percentages*/}
                     {topScores.map((score, index) => (
                         <div key={index}>
-                            <div className="flex  justify-between text-xl font-semibold">
+                            <div className="flex text-xl font-semibold">
+                                {/*get rid of justify between and place each aspect separately*/}
                                 <h2>{score.name}</h2>
-                                {/*<div className="w-full h-4 bg-blue-500 my-auto" />*/}
+                                <div className="rounded-lg h-5 my-auto mx-1" style={{
+                                    backgroundColor: score.color,
+                                    width: `${Math.min(Math.abs(score.value) * 10, 100)}%`,
+                                    justifyContent: "flex-start"
 
-                                <h2>{score.value}%</h2>
+                                }} />
+
+                                <h2 className="ml-auto">{score.value}%</h2>
                             </div>
-                            {/*<div className="w-full h-4 bg-blue-500 my-auto" />*/}
                             <hr className="border-black my-1" />
                         </div>
                     ))}
                     {/*mood score*/}
-                    <div className="flex justify-between text-xl font-semibold">
+                    <div className="flex text-xl font-semibold">
                         <h2>Mood</h2>
-                        <h2>{result.sentimentScore}</h2>
+                        <div className="rounded-lg h-5 my-auto mx-1" style={{
+                            backgroundColor: moodColor,
+                            width: `${Math.min(Math.abs(result.sentimentScore) * 2, 100)}%`,
+                            justifyContent: "flex-start"
+                        }} />
+                        <h2 className="ml-auto">{result.sentimentScore}</h2>
                     </div>
                     {/*top 3 sentiment words*/}
                     {topWords.map((word, index) => (
